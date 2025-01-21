@@ -1,0 +1,408 @@
+Here’s a **Linux cheat sheet** with some useful commands, organized by category, to help you navigate the system efficiently.
+
+---
+
+### **Basic File and Directory Management**
+
+- **Create a directory**:
+  ```bash
+  mkdir <directory_name>
+  ```
+
+- **Change directory**:
+  ```bash
+  cd <directory_path>
+  ```
+
+- **List files in a directory**:
+  ```bash
+  ls
+  ```
+
+- **List all files (including hidden)**:
+  ```bash
+  ls -a
+  ```
+
+- **List files with detailed information**:
+  ```bash
+  ls -l
+  ```
+
+- **Move or rename a file/directory**:
+  ```bash
+  mv <source> <destination>
+  ```
+
+- **Copy a file/directory**:
+  ```bash
+  cp <source> <destination>
+  ```
+
+- **Remove a file**:
+  ```bash
+  rm <file_name>
+  ```
+
+- **Remove an empty directory**:
+  ```bash
+  rmdir <directory_name>
+  ```
+
+- **Remove a directory and its contents**:
+  ```bash
+  rm -r <directory_name>
+  ```
+
+- **Display the contents of a file**:
+  ```bash
+  cat <file_name>
+  ```
+
+- **View a file page-by-page**:
+  ```bash
+  less <file_name>
+  ```
+
+- **Search for a string within a file**:
+  ```bash
+  grep "search_string" <file_name>
+  ```
+
+- **Display file contents with line numbers**:
+  ```bash
+  nl <file_name>
+  ```
+
+---
+
+### **System Information**
+
+- **Check current directory**:
+  ```bash
+  pwd
+  ```
+
+- **Show the current logged-in users**:
+  ```bash
+  who
+  ```
+
+- **Display system information (hostname, uptime, etc.)**:
+  ```bash
+  uname -a
+  ```
+
+- **Display memory usage**:
+  ```bash
+  free -h
+  ```
+
+- **Show disk usage**:
+  ```bash
+  df -h
+  ```
+
+- **Show free disk space on a specific directory**:
+  ```bash
+  du -sh <directory_name>
+  ```
+
+- **Show current processes**:
+  ```bash
+  ps aux
+  ```
+
+- **Monitor processes in real-time**:
+  ```bash
+  top
+  ```
+
+- **Show hardware information**:
+  ```bash
+  lshw
+  ```
+
+---
+
+### **File Permissions and Ownership**
+
+- **Check file permissions**:
+  ```bash
+  ls -l <file_name>
+  ```
+
+- **Change file permissions**:
+  ```bash
+  chmod <permissions> <file_name>
+  ```
+
+- **Change file owner**:
+  ```bash
+  chown <owner>:<group> <file_name>
+  ```
+
+- **Change file group**:
+  ```bash
+  chgrp <group> <file_name>
+  ```
+
+---
+
+### **Package Management (Debian/Ubuntu-based)**
+
+- **Update package list**:
+  ```bash
+  sudo apt update
+  ```
+
+- **Upgrade installed packages**:
+  ```bash
+  sudo apt upgrade
+  ```
+
+- **Install a package**:
+  ```bash
+  sudo apt install <package_name>
+  ```
+
+- **Remove a package**:
+  ```bash
+  sudo apt remove <package_name>
+  ```
+
+- **Search for a package**:
+  ```bash
+  apt search <package_name>
+  ```
+
+---
+
+### **Network Commands**
+
+- **Check IP address**:
+  ```bash
+  ip a
+  ```
+
+- **Ping a host**:
+  ```bash
+  ping <hostname_or_ip>
+  ```
+
+- **Display routing table**:
+  ```bash
+  netstat -r
+  ```
+
+- **Show active network connections**:
+  ```bash
+  netstat -tuln
+  ```
+
+- **Get information about a domain**:
+  ```bash
+  nslookup <domain_name>
+  ```
+
+---
+
+### **Process Management**
+
+- **Start a process in the background**:
+  ```bash
+  <command> &
+  ```
+
+- **Bring a background process to the foreground**:
+  ```bash
+  fg
+  ```
+
+- **List running processes**:
+  ```bash
+  ps aux
+  ```
+
+- **Kill a process by PID**:
+  ```bash
+  kill <pid>
+  ```
+
+- **Forcefully kill a process**:
+  ```bash
+  kill -9 <pid>
+  ```
+
+- **Check system logs**:
+  ```bash
+  tail -f /var/log/syslog
+  ```
+
+---
+
+### **User and Group Management**
+
+- **Add a new user**:
+  ```bash
+  sudo useradd <username>
+  ```
+
+- **Set password for a user**:
+  ```bash
+  sudo passwd <username>
+  ```
+
+- **Add a user to a group**:
+  ```bash
+  sudo usermod -aG <group_name> <username>
+  ```
+
+- **Delete a user**:
+  ```bash
+  sudo userdel <username>
+  ```
+
+- **Create a new group**:
+  ```bash
+  sudo groupadd <group_name>
+  ```
+
+---
+
+### **SSH (Secure Shell)**
+
+- **Connect to a remote server via SSH**:
+  ```bash
+  ssh <username>@<hostname_or_ip>
+  ```
+
+- **Copy a file to a remote server using SCP**:
+  ```bash
+  scp <local_file> <username>@<hostname_or_ip>:<remote_directory>
+  ```
+
+- **Copy a file from a remote server using SCP**:
+  ```bash
+  scp <username>@<hostname_or_ip>:<remote_file> <local_directory>
+  ```
+
+- **Transfer files using SFTP**:
+  ```bash
+  sftp <username>@<hostname_or_ip>
+  ```
+
+---
+
+### **Archiving and Compression**
+
+- **Create a tar archive**:
+  ```bash
+  tar -cvf <archive_name>.tar <directory>
+  ```
+
+- **Extract a tar archive**:
+  ```bash
+  tar -xvf <archive_name>.tar
+  ```
+
+- **Create a compressed tar archive**:
+  ```bash
+  tar -czvf <archive_name>.tar.gz <directory>
+  ```
+
+- **Extract a compressed tar archive**:
+  ```bash
+  tar -xzvf <archive_name>.tar.gz
+  ```
+
+- **Zip a file**:
+  ```bash
+  zip <archive_name>.zip <file_name>
+  ```
+
+- **Unzip a file**:
+  ```bash
+  unzip <archive_name>.zip
+  ```
+
+---
+
+### **Text Processing**
+
+- **Sort a file**:
+  ```bash
+  sort <file_name>
+  ```
+
+- **Count the number of lines, words, and characters in a file**:
+  ```bash
+  wc <file_name>
+  ```
+
+- **Show unique lines in a file**:
+  ```bash
+  uniq <file_name>
+  ```
+
+- **Cut out columns from a file**:
+  ```bash
+  cut -d '<delimiter>' -f <fields> <file_name>
+  ```
+
+- **Redirect output to a file**:
+  ```bash
+  command > <file_name>
+  ```
+
+- **Append output to a file**:
+  ```bash
+  command >> <file_name>
+  ```
+
+- **Redirect error output**:
+  ```bash
+  command 2> <error_log>
+  ```
+
+---
+
+### **Search and Find**
+
+- **Find files by name**:
+  ```bash
+  find <directory> -name <file_name>
+  ```
+
+- **Search for a text string in a file**:
+  ```bash
+  grep "search_string" <file_name>
+  ```
+
+- **Find a command location**:
+  ```bash
+  which <command>
+  ```
+
+---
+
+### **Miscellaneous**
+
+- **Clear the terminal screen**:
+  ```bash
+  clear
+  ```
+
+- **Show manual for a command**:
+  ```bash
+  man <command>
+  ```
+
+- **Search for a command in the manual**:
+  ```bash
+  man -k <keyword>
+  ```
+
+---
+
+This cheat sheet covers many basic and advanced Linux commands. Let me know if you need further explanations or additional commands!

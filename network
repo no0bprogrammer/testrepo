@@ -1,0 +1,339 @@
+Here are some essential **network-related commands** in Linux, along with examples of how to use them.
+
+---
+
+### **1. `ifconfig`** (deprecated, use `ip` instead)
+The `ifconfig` command is used to display or configure network interfaces in Linux. 
+
+- **Show network interfaces**:
+  ```bash
+  ifconfig
+  ```
+
+- **Show a specific interface (e.g., eth0)**:
+  ```bash
+  ifconfig eth0
+  ```
+
+- **Enable a network interface**:
+  ```bash
+  sudo ifconfig eth0 up
+  ```
+
+- **Disable a network interface**:
+  ```bash
+  sudo ifconfig eth0 down
+  ```
+
+---
+
+### **2. `ip`** (Recommended over `ifconfig`)
+The `ip` command is the modern way to show and manipulate network interfaces, routes, and IP addresses.
+
+- **Show all network interfaces**:
+  ```bash
+  ip a
+  ```
+
+- **Show the routing table**:
+  ```bash
+  ip route
+  ```
+
+- **Add a new IP address to an interface**:
+  ```bash
+  sudo ip addr add 192.168.1.100/24 dev eth0
+  ```
+
+- **Delete an IP address from an interface**:
+  ```bash
+  sudo ip addr del 192.168.1.100/24 dev eth0
+  ```
+
+- **Bring up a network interface**:
+  ```bash
+  sudo ip link set eth0 up
+  ```
+
+- **Bring down a network interface**:
+  ```bash
+  sudo ip link set eth0 down
+  ```
+
+---
+
+### **3. `ping`**
+The `ping` command is used to test network connectivity by sending ICMP echo request packets to a target host.
+
+- **Ping a host**:
+  ```bash
+  ping google.com
+  ```
+
+- **Ping a host for a specific number of times**:
+  ```bash
+  ping -c 5 google.com
+  ```
+
+- **Ping a specific IP address**:
+  ```bash
+  ping 192.168.1.1
+  ```
+
+- **Ping a host with a specific packet size**:
+  ```bash
+  ping -s 1000 google.com
+  ```
+
+---
+
+### **4. `netstat`** (deprecated, use `ss` instead)
+`netstat` provides information about network connections, routing tables, interface statistics, etc.
+
+- **Display all active connections and listening ports**:
+  ```bash
+  netstat -tuln
+  ```
+
+- **Display all network connections (including TCP, UDP)**:
+  ```bash
+  netstat -a
+  ```
+
+- **Show routing table**:
+  ```bash
+  netstat -r
+  ```
+
+- **Display network interface statistics**:
+  ```bash
+  netstat -i
+  ```
+
+---
+
+### **5. `ss`** (Replacement for `netstat`)
+The `ss` (Socket Statictics) command is a modern utility to display network connections, socket statistics, and more.
+
+- **List all active sockets (TCP, UDP, etc.)**:
+  ```bash
+  ss -tuln
+  ```
+
+- **Display detailed information about all listening ports**:
+  ```bash
+  ss -ltn
+  ```
+
+- **Show all open ports and associated processes**:
+  ```bash
+  ss -ltnp
+  ```
+
+---
+
+### **6. `traceroute`**
+`traceroute` shows the path that packets take from your computer to a destination host, listing the routers they pass through.
+
+- **Traceroute to a domain or IP address**:
+  ```bash
+  traceroute google.com
+  ```
+
+- **Traceroute to a specific destination IP address**:
+  ```bash
+  traceroute 8.8.8.8
+  ```
+
+- **Specify the maximum number of hops**:
+  ```bash
+  traceroute -m 20 google.com
+  ```
+
+---
+
+### **7. `dig`** (Domain Information Groper)
+`dig` is used for querying DNS (Domain Name System) information.
+
+- **Get the IP address of a domain**:
+  ```bash
+  dig google.com
+  ```
+
+- **Query a specific DNS record (e.g., A, MX, TXT)**:
+  ```bash
+  dig google.com MX
+  ```
+
+- **Show DNS information with a specific server**:
+  ```bash
+  dig @8.8.8.8 google.com
+  ```
+
+---
+
+### **8. `nslookup`**
+`nslookup` is another tool for querying DNS to obtain domain name or IP address information.
+
+- **Lookup the IP address for a domain**:
+  ```bash
+  nslookup google.com
+  ```
+
+- **Query a specific DNS server**:
+  ```bash
+  nslookup google.com 8.8.8.8
+  ```
+
+---
+
+### **9. `route`** (deprecated, use `ip route` instead)
+The `route` command shows or manipulates the IP routing table.
+
+- **Show the current routing table**:
+  ```bash
+  route -n
+  ```
+
+- **Add a route to the routing table**:
+  ```bash
+  sudo route add -net 192.168.1.0/24 gw 192.168.1.1
+  ```
+
+- **Delete a route from the routing table**:
+  ```bash
+  sudo route del -net 192.168.1.0/24
+  ```
+
+---
+
+### **10. `curl`**
+`curl` is a command-line tool used to transfer data to or from a server, supporting protocols like HTTP, FTP, and more.
+
+- **Download a file from a URL**:
+  ```bash
+  curl -O https://example.com/file.zip
+  ```
+
+- **Get the HTTP response headers from a website**:
+  ```bash
+  curl -I https://example.com
+  ```
+
+- **Send a GET request to a server**:
+  ```bash
+  curl https://example.com
+  ```
+
+- **Send a POST request with data**:
+  ```bash
+  curl -X POST -d "param1=value1&param2=value2" https://example.com
+  ```
+
+---
+
+### **11. `wget`**
+`wget` is another tool for downloading files from the web.
+
+- **Download a file from a URL**:
+  ```bash
+  wget https://example.com/file.zip
+  ```
+
+- **Download a file to a specific location**:
+  ```bash
+  wget -O /path/to/save/file.zip https://example.com/file.zip
+  ```
+
+- **Download all files in a website**:
+  ```bash
+  wget -r https://example.com
+  ```
+
+---
+
+### **12. `tcpdump`**
+`tcpdump` is a powerful command-line packet analyzer. It allows you to capture and inspect packets from your network interface.
+
+- **Capture packets on a specific interface**:
+  ```bash
+  sudo tcpdump -i eth0
+  ```
+
+- **Capture packets for a specific port**:
+  ```bash
+  sudo tcpdump -i eth0 port 80
+  ```
+
+- **Save the captured packets to a file**:
+  ```bash
+  sudo tcpdump -i eth0 -w capture.pcap
+  ```
+
+---
+
+### **13. `netcat` (nc)**
+`netcat` (or `nc`) is a versatile networking tool used for reading from and writing to network connections.
+
+- **Listen on a specific port**:
+  ```bash
+  nc -l 12345
+  ```
+
+- **Connect to a remote host on a specific port**:
+  ```bash
+  nc example.com 80
+  ```
+
+- **Transfer a file to a remote system**:
+  ```bash
+  nc -l 12345 > received_file.txt
+  ```
+
+  And on the sending machine:
+
+  ```bash
+  cat file.txt | nc <destination_ip> 12345
+  ```
+
+---
+
+### **14. `hostname`**
+The `hostname` command shows or sets the system's hostname.
+
+- **Show the system's hostname**:
+  ```bash
+  hostname
+  ```
+
+- **Set the system's hostname**:
+  ```bash
+  sudo hostnamectl set-hostname new-hostname
+  ```
+
+---
+
+### **15. `ip link`**
+This command is used to display and manage network interfaces.
+
+- **Show all network interfaces**:
+  ```bash
+  ip link show
+  ```
+
+- **Bring up a network interface**:
+  ```bash
+  sudo ip link set eth0 up
+  ```
+
+- **Bring down a network interface**:
+  ```bash
+  sudo ip link set eth0 down
+  ```
+
+---
+
+### **Conclusion**
+These are some of the most commonly used **networking commands** in Linux. They can help you troubleshoot, monitor, and configure your network settings. 
+
+Let me know if you need more information on any specific command or example!
