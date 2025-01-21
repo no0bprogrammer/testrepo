@@ -1,0 +1,17 @@
+Hi
+Testfile
+Ankit
+Ammmu
+Hathiram
+Docker
+docker --version
+docker info
+docker ps -a
+docker images
+docker build -t <image:tag> .
+docker run <imagename>
+-t interactive
+-d background
+--name <name of container>
+-p <host:container>
+
